@@ -34,7 +34,6 @@ def computeReturnRate(priceMat, transFeeRate, actionMat, K, problem_type):
 		z = actionVec[3] # The equivalent cash for such transaction.
 		currentPriceVec = priceMat[day]	 # current priceVec
 		
-
 		# check action day
 		if day >= preDay and day >= 0 and z > 0 :
 			# get real action by suggested action
@@ -70,8 +69,10 @@ def computeReturnRate(priceMat, transFeeRate, actionMat, K, problem_type):
 				stockHolding[i][b] += getCash*(1-transFeeRate) / currentPriceBuy # Buy stock using cash
 				realAction[i] = 2
 			else:
+				print("1")
 				assert False
 		else:
+			print(f"Error at action {i}: day={day}, fromStock={a}, toStock={b}, cash={z}")
 			assert False
 
 
@@ -132,7 +133,7 @@ if __name__ == "__main__":
 	start = time.time()
 	actionMat = myAction01(priceMat, transFeeRate)	# Obtain the suggested action
 	rr, cashHolding, cash_longest_day = computeReturnRate(priceMat, transFeeRate, actionMat, K, problem_type)  # Compute return rate
-	end = time.time()
+	end = time.time()	
 	print("Time:", end - start)
 	print("rr=%f%%" %(rr*100))
 	print("Non continueous cash holding=%d" %(cashHolding))
