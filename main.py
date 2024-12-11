@@ -1,3 +1,9 @@
+'''main.py'''
+import sys
+import random
+
+from ecdsa import ellipticcurve
+
 from mySubmission import compute4G
 from mySubmission import compute5G
 from mySubmission import double_and_add
@@ -5,9 +11,7 @@ from mySubmission import optimized_double_and_add
 from mySubmission import GetCurveParameters
 from mySubmission import sign_transaction
 from mySubmission import verify_signature
-import sys
-import random
-from ecdsa import ellipticcurve
+
 
 
 TA_TEST_DATA=0
@@ -81,7 +85,7 @@ def Problem6(private_key, transaction_hashID):
     #print("Problem 6: Sign Transaction")
 
     # https://www.blockchain.com/explorer/transactions/btc/4a5e1e4baab89f3a32518a88c31bc87f618f76673e2cc77ab2127b7afdeda33b
-    #transaction_hashID = "4a5e1e4baab89f3a32518a88c31bc87f618f76673e2cc77ab2127b7afdeda33b"
+    # transaction_hashID = "4a5e1e4baab89f3a32518a88c31bc87f618f76673e2cc77ab2127b7afdeda33b"
     signature = sign_transaction(private_key, transaction_hashID, getG, getN, random.randint)
     print(f"{signature[0]:x} {signature[1]:x}")
 
@@ -141,20 +145,20 @@ def main():
         case 6:
             # public data: "4a5e1e4baab89f3a32518a88c31bc87f618f76673e2cc77ab2127b7afdeda33b"
             # hidden data: undisclosed
-            indata = lineinfo[1]
+            #indata = lineinfo[1]
             outdata = lineinfo[2:]
-            #indata = "4a5e1e4baab89f3a32518a88c31bc87f618f76673e2cc77ab2127b7afdeda33b"
+            indata = "4a5e1e4baab89f3a32518a88c31bc87f618f76673e2cc77ab2127b7afdeda33b"
             #print(f"indata: {indata}")
             #print(f"outdata: {outdata}")
             Problem6(TA_TEST_DATA, indata)
         case 7:
             # public data: "4a5e1e4baab89f3a32518a88c31bc87f618f76673e2cc77ab2127b7afdeda33b"
             # hidden data: undisclosed
-            indata = lineinfo[1:4]
+            # indata = lineinfo[1:4]
             outdata = lineinfo[4:]
-            #indata = ["4a5e1e4baab89f3a32518a88c31bc87f618f76673e2cc77ab2127b7afdeda33b",
-            #          "f9308a019258c31049344f85f89d5229b531c845836f99b08601f113bce036f9",
-            #          "8d89a38eb73d9528e4c1432f88ab9e3a16b4d23f333be3f88a4ce6167c019066"]
+            indata = ["4a5e1e4baab89f3a32518a88c31bc87f618f76673e2cc77ab2127b7afdeda33b",
+                     "0x8d89a38eb73d9528e4c1432f88ab9e3a16b4d23f333be3f88a4ce6167c019066",
+                     "0xf9308a019258c31049344f85f89d5229b531c845836f99b08601f113bce036f9"]
             #print(f"indata: {indata}")
             #print(f"outdata: {outdata}")
             Problem7(TA_TEST_DATA, indata)
