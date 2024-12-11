@@ -83,7 +83,7 @@ def optimized_double_and_add(n, point, callback_get_INFINITY):
 
         if bit == '1':            # 如果當前位是 1 ，則進行加法運算
             result -= point       # 加上基點 G
-            num_additions += 1    # 記錄加法次數
+            num_additions += 1    #          
 
     return result, num_doubles, num_additions
 
